@@ -3,57 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Организационная структура</title>
     <link rel="stylesheet" href="style.css">
+    <title>Организационная структура</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <p>Логотип</p>
-        </div>
-        <div class="title">Организационная структура</div>
-    </header>
+<header>
+    <div class="logo">
+        <p>Логотип</p>
+    </div>
+    <div class="title">Организационная структура</div>
+</header>
 
-    <main>
-        <div class="main-container">
-            <div class="main-container-left container">
-                <div class="chart">
-                    <div class="level">
-                        <div class="node">Дороги России</div>
-                    </div>
-
-                    <div class="level">
-                        <div class="node">Административный департамент</div>
-                        <div class="node">Академия Умные дороги</div>
-                    </div>
-
-                    <div class="level">
-                        <div class="node">Договорной отдел</div>
-                        <div class="node active">Общий отдел</div>
-                    </div>
-
-                    <div class="level">
-                        <div class="node">Лицензионный отдел</div>
-                        <div class="node">Управление маркетинга</div>
-                    </div>
+<main>
+    <div class="main-container">
+        <div class="main-container-left container">
+            <div class="chart">
+                <div class="level">
+                    <div class="node">Дороги России</div>
                 </div>
-            </div>
-            <div class="main-container-right container">
-                <div class="card">
-                    <div class="card-header">
-                        <p class="emp-department">Лицензионный Отдел</p>
-                        <div>-</div>
-                        <p class="emp-position">Директор шлагбаума</p>
-                    </div>
-                    <div class="card-main">
-                        <p class="emp-name">Иванов Иванов Иванович</p>
-                        <div><p class="emp-number">+7 233 333 333</p> <p class="emp-email">ivanov.super@dorogi.ru</p></div>
-                    </div>
-                    <p class="emp-office">Ресепшн</p>
+
+                <div class="level">
+                    <div class="node" data-department-id="1">Административный департамент</div>
+                    <div class="node" data-department-id="12">Академия Умные дороги</div>
+                </div>
+
+                <div class="level">
+                    <div class="node" data-department-id="3">Договорной отдел</div>
+                    <div class="node" data-department-id="4">Общий отдел</div>
+                </div>
+
+                <div class="level">
+                    <div class="node" data-department-id="30">Лицензионный отдел</div>
+                    <div class="node" data-department-id="31">Управление маркетинга</div>
                 </div>
             </div>
         </div>
-    </main>
+
+        <div class="main-container-right container">
+            <div id="employee-container" class="employee-container">
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="employee-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="modal-left">
+                <form id="employee-form">
+                    <label class="form-label">ФИО: <input type="text" id="employee-name" required></label>
+                    <label class="form-label">Мобильный телефон: <input type="text" id="employee-mobile" required></label>
+                    <label class="form-label">День рождения: <input type="date" id="employee-birthday"></label>
+                    <label class="form-label">Структурное подразделение: <input type="text" id="employee-department" required></label>
+                    <label class="form-label">Должность: <input type="text" id="employee-position" required></label>
+                    <label class="form-label">Непосредственный руководитель: <input type="text" id="employee-manager"></label>
+                    <label class="form-label">Помощник: <input type="text" id="employee-assistant"></label>
+                    <label class="form-label">Рабочий телефон: <input type="text" id="employee-work-phone" required></label>
+                    <label class="form-label">Электронная почта: <input type="email" id="employee-email" required></label>
+                    <label class="form-label">Кабинет: <input type="text" id="employee-office" maxlength="10" required></label>
+                    <label class="form-label">Прочая информация: <textarea id="employee-info"></textarea></label>
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="modal-right">
+                <button class="event-filter" data-filter="past">Прошедшие</button>
+                <button class="event-filter" data-filter="current">Текущие</button>
+                <button class="event-filter" data-filter="future">Будущие</button>
+
+                <h3>Добавить событие</h3>
+                <form id="event-form">
+                    <label>Тип события:
+                        <select id="event-type" required>
+                            <option value="training">Обучение</option>
+                            <option value="absence">Отсутствие</option>
+                            <option value="vacation">Отпуск</option>
+                        </select>
+                    </label>
+                    <label>Дата начала: <input type="date" id="event-start-date" required></label>
+                    <label>Дата окончания: <input type="date" id="event-end-date" required></label>
+                    <label>Краткое обоснование: <textarea id="event-reason"></textarea></label>
+                    <button type="submit">Добавить событие</button>
+                </form>
+
+                <h3>Отгулы</h3>
+                <div id="absence-list">
+                    <!-- Отгулы будут отображаться здесь -->
+                </div>
+
+                <h3>Обучения</h3>
+                <div id="training-list">
+                    <!-- Обучения будут отображаться здесь -->
+                </div>
+
+                <h3>Отпуска</h3>
+                <div id="leave-list">
+                    <!-- Отпуска будут отображаться здесь -->
+                </div>
+    </div>
+</div>
+
+
 <script src="renderer.js"></script>
 </body>
 </html>
