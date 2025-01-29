@@ -15,6 +15,7 @@
     "electron": "^33.3.1"
   },
   "dependencies": {
+    "docx": "^9.1.1",
     "sweetalert2": "^11.15.10"
   }
 }

@@ -408,14 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isWorkPhoneValid = validatePhoneNumber(workPhone);
         isEmailValid = validateEmail(email);
 
-        console.log("Mobile valid:", isMobileValid); // Для отладки
-        console.log("WorkPhone valid:", isWorkPhoneValid); // Для отладки
-        console.log("Email valid:", isEmailValid); // Для отладки
-
-        if (!isMobileValid || !isWorkPhoneValid || !isEmailValid) {
-            alert("Введите корректные данные")
-            return
-        }
+        window.electron.generateDocx({ isMobileValid, isWorkPhoneValid, isEmailValid });
 
         const updatedEmployee = {
             last_name: document.getElementById('employee-name').value.split(' ')[0],
@@ -535,3 +528,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
