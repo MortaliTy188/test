@@ -19,22 +19,22 @@
         <div class="main-container-left container">
             <div class="chart">
                 <div class="level">
-                    <div class="node">Дороги России</div>
+                    <div class="node" data-department-id="0"></div>
                 </div>
 
                 <div class="level">
-                    <div class="node" data-department-id="1">Административный департамент</div>
-                    <div class="node" data-department-id="12">Академия Умные дороги</div>
+                    <div class="node" data-department-id="1"></div>
+                    <div class="node" data-department-id="12"></div>
                 </div>
 
                 <div class="level">
-                    <div class="node" data-department-id="3">Договорной отдел</div>
-                    <div class="node" data-department-id="4">Общий отдел</div>
+                    <div class="node" data-department-id="3"></div>
+                    <div class="node" data-department-id="4"></div>
                 </div>
 
                 <div class="level">
-                    <div class="node" data-department-id="30">Лицензионный отдел</div>
-                    <div class="node" data-department-id="31">Управление маркетинга</div>
+                    <div class="node" data-department-id="30"></div>
+                    <div class="node" data-department-id="31"></div>
                 </div>
             </div>
         </div>
@@ -42,6 +42,7 @@
         <div class="main-container-right container">
             <div id="employee-container" class="employee-container">
             </div>
+            <div id="add-employee-button" class="add-employee-button">+</div>
         </div>
     </div>
 </main>
@@ -53,17 +54,27 @@
             <div class="modal-left">
                 <form id="employee-form">
                     <label class="form-label">ФИО: <input type="text" id="employee-name" required></label>
-                    <label class="form-label">Мобильный телефон: <input type="text" id="employee-mobile" required></label>
+                    <label class="form-label">Мобильный телефон: <input type="tel" id="employee-mobile"  pattern="^(\+7|8)\d{10}$" required></label>
                     <label class="form-label">День рождения: <input type="date" id="employee-birthday"></label>
                     <label class="form-label">Структурное подразделение: <input type="text" id="employee-department" required></label>
                     <label class="form-label">Должность: <input type="text" id="employee-position" required></label>
-                    <label class="form-label">Непосредственный руководитель: <input type="text" id="employee-manager"></label>
-                    <label class="form-label">Помощник: <input type="text" id="employee-assistant"></label>
-                    <label class="form-label">Рабочий телефон: <input type="text" id="employee-work-phone" required></label>
+                    <label class="form-label">Непосредственный руководитель:
+                        <select id="employee-manager">
+                            <option value="">Выберите руководителя</option>
+                        </select>
+                    </label>
+                    <label class="form-label">Помощник:
+                        <select id="employee-assistant">
+                            <option value="">Выберите помощника</option>
+                        </select>
+                    </label>
+                    <label class="form-label">Рабочий телефон: <input type="tel" id="employee-work-phone"  pattern="^(\+7|8)\d{10}$" required></label>
                     <label class="form-label">Электронная почта: <input type="email" id="employee-email" required></label>
                     <label class="form-label">Кабинет: <input type="text" id="employee-office" maxlength="10" required></label>
-                    <label class="form-label">Прочая информация: <textarea id="employee-info"></textarea></label>
+                    <label class="form-label">Прочая информация: <textarea id="employee-info" disabled></textarea></label>
                     <button type="submit">Сохранить</button>
+                    <button id="edit-button" class="edit-button">✏️</button>
+                    <button id="fire-button">Уволить</button>
                 </form>
             </div>
             <div class="vertical-line"></div>
@@ -101,9 +112,10 @@
                 <div id="leave-list">
                     <!-- Отпуска будут отображаться здесь -->
                 </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
 <script src="renderer.js"></script>
 </body>

@@ -49,6 +49,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .level {
@@ -215,4 +216,142 @@ header {
 }
 .event-filter.active {
     background-color: #39870e;
+}
+
+.add-employee-button {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.add-employee-button:hover {
+    background-color: #0056b3;
+}
+
+.chart {
+    position: relative;
+}
+
+.node {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    margin: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.node::before,
+.node::after {
+    content: '';
+    position: absolute;
+    border: 1px solid black;
+}
+
+.node[data-department-id="0"]::before {
+    width: 0;
+    height: 20px;
+    border-right: 1px solid black;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="1"]::before {
+    width: 0;
+    height: 29px;
+    border-left: 1px solid black;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="12"]::before {
+    width: 0;
+    height: 29px;
+    border-left: 1px solid black;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="1"]::after {
+    width: 275px;
+    height: 0;
+    border-top: 1px solid black;
+    top: -30px;
+    left: 107%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="3"]::before, .node[data-department-id="4"]::before {
+    width: 0;
+    height: 28px;
+    border-left: 1px solid black;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="4"]::after {
+    width: 192px;
+    height: 0;
+    border-top: 1px solid black;
+    top: -30px;
+    left: -34%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="30"]::before,
+.node[data-department-id="31"]::before {
+    width: 0;
+    height: 30px;
+    border-left: 1px solid black;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="0"]::after {
+    width: 0;
+    height: 20px;
+    border-right: 1px solid black;
+    top: 386%;
+    left: 42%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="3"]::after {
+    width: 246px;
+    height: 0;
+    border-top: 1px solid black;
+    top: 58px;
+    left: 106%;
+    transform: translateX(-50%);
+}
+
+.node[data-department-id="31"]::after {
+    width: 0;
+    height: 20px;
+    border-left: 1px solid black;
+    top: -52px;
+    left: 35%;
+    transform: translateX(-50%);
+}
+
+.fired-recently {
+    background-color: #d3d3d3; /* Серый цвет фона */
+    color: #808080; /* Серый цвет текста */
 }
