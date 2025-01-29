@@ -10,14 +10,14 @@ app.on('ready', () => {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'src', 'preload.js'), // Указание на preload.js
-            contextIsolation: true, // Включаем изоляцию контекста
-            enableRemoteModule: false, // Отключаем удаленные модули для безопасности
+            preload: path.join(__dirname, 'src', 'preload.js'),
+            contextIsolation: true,
+            enableRemoteModule: false,
         },
     });
 
     mainWindow.loadFile(path.join(__dirname, 'src', 'index.html'));
-    mainWindow.webContents.openDevTools(); // Уберите эту строку для финальной версии.
+    mainWindow.webContents.openDevTools();
 });
 
 app.on('window-all-closed', () => {
@@ -31,15 +31,12 @@ ipcMain.on("generate-docx", (event, { isMobileValid, isWorkPhoneValid, isEmailVa
             {
                 properties: {},
                 children: [
-                    // Title Paragraph
                     new Paragraph({
                         text: "Отчет о проверке данных",
                         heading: HeadingLevel.TITLE,
                     }),
-                    // Table Definition
                     new Table({
                         rows: [
-                            // Header Row
                             new TableRow({
                                 children: [
                                     new TableCell({
@@ -51,8 +48,7 @@ ipcMain.on("generate-docx", (event, { isMobileValid, isWorkPhoneValid, isEmailVa
                                         width: { size: 5000, type: WidthType.DXA },
                                     }),
                                 ],
-                            }),
-                            // Row for Mobile Phone Check
+                            })
                             new TableRow({
                                 children: [
                                     new TableCell({
@@ -65,7 +61,6 @@ ipcMain.on("generate-docx", (event, { isMobileValid, isWorkPhoneValid, isEmailVa
                                     }),
                                 ],
                             }),
-                            // Row for Work Phone Check
                             new TableRow({
                                 children: [
                                     new TableCell({
@@ -78,7 +73,6 @@ ipcMain.on("generate-docx", (event, { isMobileValid, isWorkPhoneValid, isEmailVa
                                     }),
                                 ],
                             }),
-                            // Row for Email Check
                             new TableRow({
                                 children: [
                                     new TableCell({

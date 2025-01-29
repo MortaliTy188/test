@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Fetch and display department names
+    // загрузка департаментов
     const fetchAndDisplayDepartments = async () => {
         const departments = await fetchData('http://localhost:3000/api/v1/departments');
         if (departments) {
